@@ -1,6 +1,14 @@
 const mongoose = require('mongoose');
 
 const recipeSchema = new mongoose.Schema({
+  chef: {
+    type: String,
+    required: 'This field is required.'
+  },  
+    status: {
+    type: String,
+    required: 'This field is required.'
+  },
   name: {
     type: String,
     required: 'This field is required.'
@@ -8,24 +16,40 @@ const recipeSchema = new mongoose.Schema({
   ingredients: {
     type: Array,
     required: 'This field is required.'
+  }, 
+  instructions: {
+  type: String,
+  required: 'This field is required.'
   },
-  description: {
+  notes: {
     type: String,
-    required: 'This field is required.'
+    required: false
+    },
+  likes: {
+    type: Number,
+    required: true,
   },
-  creator: {
-    type: String,
-    required: 'This field is required.'
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
   },
   category: {
     type: String,
-    enum: ['Component', 'Sauce', 'Final'],
+    enum: ['component', 'sauce', 'final'],
     required: 'This field is required.'
   },
   image: {
     type: String,
-    required: 'This field is required.'
+    required: false
   },
+  cloudinaryId: {
+    type: String,
+    require: false,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  }
 });
 
 recipeSchema.index({ name: 'text', description: 'text' });

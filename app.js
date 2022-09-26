@@ -9,7 +9,8 @@ const flash = require("express-flash")
 const expressLayouts = require('express-ejs-layouts')
 const logger = require('morgan')
 const connectDB = require("./config/database");
-const routes = require('./routes/mainRoutes.js')
+const mainRoutes = require('./routes/mainRoutes.js')
+const recipeRoutes = require('./routes/recipeRoutes.js')
 
 
 
@@ -60,8 +61,8 @@ app.use(passport.session());
 app.use(flash());
 
 //Routes
-app.use('/', routes)
-app.use('/recipe', routes)
+app.use('/', mainRoutes)
+app.use('/recipe', recipeRoutes)
 
 //Console.log Port
 app.listen(process.env.PORT, () => {
