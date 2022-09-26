@@ -3,12 +3,13 @@ const Recipe = require("../models/recipe"); // Variable for recipe model
 
 
 module.exports = {
-  getProfile: async (req, res) => { //Get request for profile
+  getProfile: async (req, res) => {
+    const limitNumber = 5
+    const latest = await Recipe.find({}).sort({_id: -1}).limit(limitNumber)
+    const food = { latest }
     try {
-      // const recipes = await Recipe.find({ user: req.user.id }); //Finds recipe from db that has logged in user id
-      res.render("profile.ejs", { title: `Chef's Black Book`, user: req.user}
-      ); //Renders profile.ejs getting info from db of logged in user
-    } catch (err) { //Errors
+      res.render("profile.ejs", { title: `Chef's Black Book`, user: req.user, food })
+    } catch (err) { 
       console.log(err);
     }
   },
@@ -32,7 +33,13 @@ module.exports = {
 
 
 
-
+  // getProfile: async (req, res) => {
+  //   const limitNumber = 5
+  //   const latest = await Recipe.find({}).sort({_id: -1}).limit(limitNumber)
+  //   const food = { latest }
+  //   try {
+  //     res.render("profile.ejs", { title: `Chef's Black Book`, user: req.user, food })
+  //   } catch (err) { 
 
 
 //   },
@@ -57,7 +64,7 @@ module.exports = {
 
 
   
-  createRecipe: async (req, res) => { //Recipe request for creating a recipe
+  createRecipe: async (req, res) => { 
     try {
       
       const result = await cloudinary.uploader.upload(req.file.path);
@@ -85,7 +92,25 @@ module.exports = {
     }
   },
 
-}
+  getRecipe: async (req, res) => {
+    try {
+      let recipeId = req.params.id;
+      const recipe = await Recipe.findById(recipeId);
+      res.render('recipe', { title: 'Cooking Blog - Recipe', recipe } );
+    } catch (err) {
+      console.log(err);
+    }
+  }, 
+  // getCatagories: async (req, res) => {
+  //   try {
+  //     const catagories = await Recipe.category;
+  //     res.render('catagories', { title: 'Cooking Blog - Recipe', catagories } );
+  //   } catch (error) {
+  //     res.satus(500).send({message: error.message || "Error Occured" });
+  //   }
+  // } 
+} 
+
 //   likePost: async (req, res) => { //Put request for likes
 //     try {
 //       await Recipe.findOneAndUpdate( //Finds recipe and update
