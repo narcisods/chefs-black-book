@@ -13,6 +13,22 @@
     <div class="col-12 col-md-8">
       <div class="row">
         <div class="col-12"><h1><%- recipe.name %></h1></div>
+        <%if(recipe.user == user.id){ %>
+          <form
+          action="/recipe/editRecipe/<%= recipe.id %>?_method=PUT"
+          method="POST"
+          class="col-1"
+        >
+          <button class="bi bi-pencil-square" type="submit"></button>
+        </form>
+        <form
+        action="/recipe/deleteRecipe/<%= recipe.id %>?_method=DELETE"
+        method="POST"
+        class="col-2"
+        >
+          <button class="bi bi-trash" type="submit"></button>
+      </form>
+          <%}%>
         <div class="col-12 mb-1"><i class=""></i>Date added - <%- recipe.createdAt %></div>
         <div class="col-12 mb-1"><i class=""></i>Made by <%- recipe.chef %></div>
         <div class="col-12 mb-1"><i class="bi bi-tag"></i> <%- recipe.category %></div>

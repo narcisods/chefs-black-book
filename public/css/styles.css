@@ -42,3 +42,8 @@
     width: 100%;
     object-fit: cover;
   }
+
+  .indeximg {
+    border: black 4px solid;
+    
+  }
