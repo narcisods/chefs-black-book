@@ -11,12 +11,12 @@ const logger = require('morgan')
 const connectDB = require("./config/database");
 const mainRoutes = require('./routes/mainRoutes.js')
 const recipeRoutes = require('./routes/recipeRoutes.js')
-const PORT = process.env.PORT || 4000
+const PORT = process.env.PORT || 8000
 
 
 
 //Use .env file in config folder
-require("dotenv").config({ path: "./config/.env" });
+require("dotenv").config({ path: "../config/.env" });
 
 //Body Parsing
 app.use(express.urlencoded({ extended: true }));
