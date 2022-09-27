@@ -11,6 +11,7 @@ const logger = require('morgan')
 const connectDB = require("./config/database");
 const mainRoutes = require('./routes/mainRoutes.js')
 const recipeRoutes = require('./routes/recipeRoutes.js')
+const PORT = process.env.PORT || 4000
 
 
 
@@ -65,7 +66,7 @@ app.use('/', mainRoutes)
 app.use('/recipe', recipeRoutes)
 
 //Console.log Port
-app.listen(process.env.PORT, () => {
-    console.log(`Server is running on ${process.env.PORT}`);
+app.listen(PORT, () => {
+    console.log(`Server is running on ${PORT}`);
   });
   
