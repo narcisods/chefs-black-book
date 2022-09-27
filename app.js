@@ -65,7 +65,7 @@ app.use('/', mainRoutes)
 app.use('/recipe', recipeRoutes)
 
 //Console.log Port
-app.listen(process.env.PORT || 8008, () => {
+app.listen(process.env.PORT, () => {
     console.log(`Server is running on ${process.env.PORT}`);
   });
   
