@@ -2,7 +2,7 @@
 <% if(recipe != null ) { %>
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item"><a href="/profile">Home</a></li>
       <li class="breadcrumb-item active" aria-current="page"><%- recipe.name %></li>
     </ol>
   </nav>
@@ -14,13 +14,13 @@
       <div class="row">
         <div class="col-12"><h1><%- recipe.name %></h1></div>
         <%if(recipe.user == user.id){ %>
-          <form
+          <!-- <form
           action="/recipe/editRecipe/<%= recipe.id %>?_method=PUT"
           method="POST"
           class="col-1"
         >
           <button class="bi bi-pencil-square" type="submit"></button>
-        </form>
+        </form> -->
         <form
         action="/recipe/deleteRecipe/<%= recipe.id %>?_method=DELETE"
         method="POST"

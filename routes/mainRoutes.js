@@ -9,6 +9,8 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth")
   * App Routes
  */
 router.get('/', homeController.homepage)
+router.get("/about", homeController.getAbout)
+router.get("/contact", homeController.getContact)
 
 router.get("/profile", ensureAuth, recipeController.getProfile)
 

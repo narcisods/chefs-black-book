@@ -71,4 +71,38 @@ module.exports = {
       console.log(err)
     }
   },
-};
+  getCatagories: async (req, res) => {
+    try {
+      res.render("catagories.ejs", { title: `Chef's Black Book - Catagories`, user: req.user})
+    } catch (err) { 
+      console.log(err);
+    }
+  },
+  getComponents: async (req, res) => {
+    try {      
+      const limitNumber = 25
+      const component = await Recipe.find({ 'category' : 'Component' }).sort({name: 1}).limit(limitNumber)
+      res.render("component.ejs", { title: `Chef's Black Book - Components`, user: req.user, component }) 
+    } catch (err) { 
+      console.log(err);
+    }
+  },
+  getSauces: async (req, res) => {
+    try {      
+      const limitNumber = 25
+      const sauces = await Recipe.find({ 'category' : 'Sauce' }).sort({name: 1}).limit(limitNumber)
+      res.render("sauces.ejs", { title: `Chef's Black Book - Components`, user: req.user, sauces }) 
+    } catch (err) { 
+      console.log(err);
+    }
+  },
+  getFinal: async (req, res) => {
+    try {      
+      const limitNumber = 25
+      const final = await Recipe.find({ 'category' : 'Final' }).sort({name: 1}).limit(limitNumber)
+      res.render("final.ejs", { title: `Chef's Black Book - Components`, user: req.user, final }) 
+    } catch (err) { 
+      console.log(err);
+    }
+  },
+}
