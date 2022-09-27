@@ -10,10 +10,8 @@ Tech used: HTML, CSS, JavaScript, EJS, Mongoose, Express
 
 This is my first attempt.
 Things to add -
-Full recipe adding function
-Recipe Printing
-Recipe Sharing
-Viewing all recipes
+Edit Old Recipe
+View Other peoples recipe
 
 Optimizations
 TBD
