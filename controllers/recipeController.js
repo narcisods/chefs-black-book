@@ -1,5 +1,5 @@
 const cloudinary = require("../middleware/cloudinary"); //Allows cloudinary middleware
-const Recipe = require("../models/recipe"); // Variable for recipe model
+const Recipe = require("../models/Recipe"); // Variable for recipe model
 
 
 module.exports = {
