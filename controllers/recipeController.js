@@ -4,11 +4,11 @@ const Recipe = require("../models/Recipe"); // Variable for recipe model
 
 module.exports = {
   getProfile: async (req, res) => {
-    const limitNumber = 5
-    const latest = await Recipe.find({}).sort({_id: -1}).limit(limitNumber)
+    const limitNumber = 20
+    const latest = await Recipe.find({user: req.user.id}).sort({_id: -1}).limit(limitNumber)
     const food = { latest }
     try {
-      res.render("profile.ejs", { title: `Chef's Black Book`, user: req.user, food })
+      res.render("profile.ejs", { title: `Chef's Black Book`, user: req.user, food, signup: true  })
     } catch (err) { 
       console.log(err);
     }
@@ -81,7 +81,7 @@ module.exports = {
   getComponents: async (req, res) => {
     try {      
       const limitNumber = 25
-      const component = await Recipe.find({ 'category' : 'Component' }).sort({name: 1}).limit(limitNumber)
+      const component = await Recipe.find({ 'category' : 'Component', user: req.user.id}).sort({name: 1}).limit(limitNumber)
       res.render("component.ejs", { title: `Chef's Black Book - Components`, user: req.user, component }) 
     } catch (err) { 
       console.log(err);
@@ -90,7 +90,7 @@ module.exports = {
   getSauces: async (req, res) => {
     try {      
       const limitNumber = 25
-      const sauces = await Recipe.find({ 'category' : 'Sauce' }).sort({name: 1}).limit(limitNumber)
+      const sauces = await Recipe.find({ user: req.user.id,'category' : 'Sauce',user: req.user.id }).sort({name: 1}).limit(limitNumber)
       res.render("sauces.ejs", { title: `Chef's Black Book - Components`, user: req.user, sauces }) 
     } catch (err) { 
       console.log(err);
@@ -99,10 +99,20 @@ module.exports = {
   getFinal: async (req, res) => {
     try {      
       const limitNumber = 25
-      const final = await Recipe.find({ 'category' : 'Final' }).sort({name: 1}).limit(limitNumber)
+      const final = await Recipe.find({ user: req.user.id,'category' : 'Final' }).sort({name: 1}).limit(limitNumber)
       res.render("final.ejs", { title: `Chef's Black Book - Components`, user: req.user, final }) 
     } catch (err) { 
       console.log(err);
     }
+  },
+  searchRecipe: async (req, res) => {
+    try {
+      let searchTerm = req.body.searchTerm;
+      let recipe = await Recipe.find( { user: req.user.id,  $text: { $search: searchTerm, $diacriticSensitive: true} });
+      res.render('search.ejs', { title: 'Cooking Blog - Search', recipe,user: req.user });
+    } catch (err) {
+      console.log(err);
+    }
+    
   },
 }

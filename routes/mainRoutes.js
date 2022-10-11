@@ -21,6 +21,8 @@ router.get("/logout", authController.logout)
 router.get("/signup", authController.getSignup)
 router.post("/signup", authController.postSignup)
 
+router.get("/about", homeController.getAbout)
+router.get("/contact", homeController.getContact)
 
 
 module.exports = router

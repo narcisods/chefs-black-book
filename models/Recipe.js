@@ -52,6 +52,7 @@ const recipeSchema = new mongoose.Schema({
   }
 });
 
+//For search feature
 recipeSchema.index({ name: 'text', description: 'text' });
 // // WildCard Indexing
 // //recipeSchema.index({ "$**" : 'text' });

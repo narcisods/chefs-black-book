@@ -45,5 +45,19 @@
 
   .indeximg {
     border: black 4px solid;
+    border-radius: 5%;
     
+  }
+  
+  .profile-img{
+    border: black 4px solid;
+    border-radius: 5%;
+    
+  }
+
+  .login-demo {
+    padding: 4px;
+    background-color: rgb(253, 253, 232);
+    font-size: .85em;
+    font-style: italic;
   }
