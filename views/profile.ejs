@@ -1,48 +1,63 @@
 <div class="row flex-lg-row-reverse align-items-center g-5 py-4 mb-4">
-  <div class="col-12 col-lg-6">
-    <img  src="/img/recipebooks.jpg" width="507" height="310" class="d-block mx-lg-auto img-fluid profile-img" loading="lazy" alt="Chef's Black Book">
-  </div>
+	<div class="col-12 col-lg-6">
+		<img
+			src="/img/recipebooks.jpg"
+			width="507"
+			height="310"
+			class="d-block mx-lg-auto img-fluid profile-img"
+			loading="lazy"
+			alt="Chef's Black Book"
+		/>
+	</div>
 
-  <div class="col-12 col-lg-6">
-    <h1 class="d-grid gap-2 d-md-flex py-1 justify-content-center">Welcome <%= user.userName %>!</h1>
-    <p class="d-grid gap-2 d-md-flex py-1 justify-content-center">
-    Click below to explore your recipes.
-    </p>
+	<div class="col-12 col-lg-6">
+		<h1 class="d-grid gap-2 d-md-flex py-1 justify-content-center">
+			Welcome <%= user.userName %>!
+		</h1>
+		<p class="d-grid gap-2 d-md-flex py-1 justify-content-center">
+			Click below to explore your recipes.
+		</p>
 
-    <div class="d-grid gap-2 d-md-flex py-1 justify-content-md-center">
-      <a href="/recipe/categories" class="btn btn-outline-secondary btn-lg px-4 me-md-2">By Categories</a>
-    </div>
+		<div class="d-grid gap-2 d-md-flex py-1 justify-content-md-center">
+			<a
+				href="/recipe/categories"
+				class="btn btn-outline-secondary btn-lg px-4 me-md-2"
+				>By Categories</a
+			>
+		</div>
 
-
-    <div class="d-grid gap-2 py-5 d-md-flex justify-content-center">
-      <a href="/recipe/new/" class="btn btn-primary btn-dark btn-lg px-4 me-md-2">+ New Recipe</a>
-    </div>
-  </div>
-
+		<div class="d-grid gap-2 py-5 d-md-flex justify-content-center">
+			<a
+				href="/recipe/new/"
+				class="btn btn-primary btn-dark btn-lg px-4 me-md-2"
+				>+ New Recipe</a
+			>
+		</div>
+	</div>
 </div>
 
 <!-- Show Latest Start -->
 <section class="pb-4 pt-4">
-  <div class="d-flex mb-2 align-items-center">
-    <h2>Latest Recipes Added</h2>
-    <!-- <a href="/explore-latest" class="ms-auto">View More</a> -->
-  </div>
+	<div class="d-flex mb-2 align-items-center">
+		<h2>Latest Recipes Added</h2>
+		<!-- <a href="/explore-latest" class="ms-auto">View More</a> -->
+	</div>
 
-  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-
-    <% if(food != '') { %>
-      <% food.latest.forEach(function(recipe, index){ %>
-      <a href="/recipe/<%= recipe._id %>" class="col text-center category__link">
-        <div class="category__img category__img--large shadow">
-          <img src="<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
-        </div>
-        <div class="pt-1"><%= recipe.name %></div>
-      </a>
-      <% }) %>
-    <% } else { %>
-      <p>No items found.</p>
-    <% } %>
-  </div>
-
+	<div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+		<% if(food != '') { %> <% food.latest.forEach(function(recipe, index){ %>
+		<a href="/recipe/<%= recipe._id %>" class="col text-center category__link">
+			<div class="category__img category__img--large shadow">
+				<img
+					src="<%= recipe.image %>"
+					alt="<%= recipe.name %>"
+					loading="lazy"
+				/>
+			</div>
+			<div class="pt-1"><%= recipe.name %></div>
+		</a>
+		<% }) %> <% } else { %>
+		<p>No items found.</p>
+		<% } %>
+	</div>
 </section>
 <!-- Show Latest End -->

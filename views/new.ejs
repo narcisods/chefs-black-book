@@ -1,95 +1,120 @@
 <div class="px-4 py-5 my-5 text-center">
-    <h1 class="display-5 fw-bold">New Recipe</h1>
-    <div class="col-lg-6 mx-auto">
-      <p class="lead">Fill our form below. Please be detailed as possible.</p>
-    </div>
-  </div>
-  
-  <div class="row justify-content-center">
+	<h1 class="display-5 fw-bold">New Recipe</h1>
+	<div class="col-lg-6 mx-auto">
+		<p class="lead">Fill our form below. Please be detailed as possible.</p>
+	</div>
+</div>
 
-        <% if(infoSubmitObj != '') { %>
-        <div class="col-8 alert alert-success" role="alert">
-            <%= infoSubmitObj %>
-          </div>
-        <% } %>
-      
-        <% if(infoErrorsObj != '') { %>
-          <div class="col-8 alert alert-danger" role="alert">
-            <%= infoErrorsObj[0].message || "All fields must be completed."%>
-          </div>
-        <% } %>
-   
-  
-    <div class="col-8">
-  
-      <form action="/recipe/create" enctype="multipart/form-data" method="POST">
-      
-        <div class="row g-3">
-  
-          <div class="col-12">
-            <label for="name" class="form-label">Chef's Name</label>
-            <input type="chef" name="chef" id="chef" class="form-control">
-          </div>
-  
-          <div class="col-12">
-            <label for="name" class="form-label">Recipe Name</label>
-            <input type="text" name="name" id="name" class="form-control">
-          </div>
+<div class="row justify-content-center">
+	<% if(infoSubmitObj != '') { %>
+	<div class="col-8 alert alert-success" role="alert"><%= infoSubmitObj %></div>
+	<% } %> <% if(infoErrorsObj != '') { %>
+	<div class="col-8 alert alert-danger" role="alert">
+		<%= infoErrorsObj[0].message || "All fields must be completed."%>
+	</div>
+	<% } %>
 
-          <div class="col-12">
-            <label for="status">Status</label><br>
-            <span>Only choose public if you wish to share recipes with other chefs.</span>
-            <select class="form-select form-control" name="status" aria-label="Status">
-              <option value="private">Private</option>
-              <option value="public">Public</option>
-            </select>
-          </div>
+	<div class="col-8">
+		<form action="/recipe/create" enctype="multipart/form-data" method="POST">
+			<div class="row g-3">
+				<div class="col-12">
+					<label for="name" class="form-label">Chef's Name</label>
+					<input type="chef" name="chef" id="chef" class="form-control" />
+				</div>
 
-          <div class="col-12">
-            <label for="category">Select Category</label>
-            <select class="form-select form-control" name="category" aria-label="Category">
-              <option selected>Select Category</option>
-              <option value="Component">Component</option>
-              <option value="Sauce">Sauce</option>
-              <option value="Final">Final</option>
-            </select>
-          </div>
-          
-          <div class="col-12">
-            <label for="name" class="form-label">Ingredients</label>
-            <div class="ingredientList">
-              <div class="ingredeintDiv mb-1">
-                <input type="text" name="ingredients" class="form-control">
-              </div>
-            </div>
-          </div>
-  
-          <div class="col-12">
-            <button type="button" class="btn btn-outline-primary" id="addIngredientsBtn">+ Ingredient</button>
-          </div>
-  
-          <div class="col-12">
-            <label for="instructions" class="form-label">Instructions</label>
-            <textarea name="instructions" id="instructions" class="form-control" cols="30" rows="8"></textarea>
-          </div>
+				<div class="col-12">
+					<label for="name" class="form-label">Recipe Name</label>
+					<input type="text" name="name" id="name" class="form-control" />
+				</div>
 
-          <div class="col-12">
-            <label for="Notes" class="form-label">Special Notes</label>
-            <textarea name="notes" id="notes" class="form-control" cols="30" rows="3" placeholder="Notes"></textarea>
-          </div>
-  
-          <div class="col-12">
-            <label for="imgUpload">Product Image</label>
-            <input type="file" class="form-control" id="imageUpload" name="file">
-          </div>
-  
-          <div class="col-12">
-            <button type="submit" class="btn btn-primary" value="Upload">Submit Recipe</button>
-          </div>
-  
-        </div>
-      
-      </form>
-  
-    </div>
-  </div>
+				<div class="col-12">
+					<label for="status">Status</label><br />
+					<span
+						>Only choose public if you wish to share recipes with other
+						chefs.</span
+					>
+					<select
+						class="form-select form-control"
+						name="status"
+						aria-label="Status"
+					>
+						<option value="private">Private</option>
+						<option value="public">Public</option>
+					</select>
+				</div>
+
+				<div class="col-12">
+					<label for="category">Select Category</label>
+					<select
+						class="form-select form-control"
+						name="category"
+						aria-label="Category"
+					>
+						<option selected>Select Category</option>
+						<option value="Component">Component</option>
+						<option value="Sauce">Sauce</option>
+						<option value="Final">Final</option>
+					</select>
+				</div>
+
+				<div class="col-12">
+					<label for="name" class="form-label">Ingredients</label>
+					<div class="ingredientList">
+						<div class="ingredeintDiv mb-1">
+							<input type="text" name="ingredients" class="form-control" />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-12">
+					<button
+						type="button"
+						class="btn btn-outline-primary"
+						id="addIngredientsBtn"
+					>
+						+ Ingredient
+					</button>
+				</div>
+
+				<div class="col-12">
+					<label for="instructions" class="form-label">Instructions</label>
+					<textarea
+						name="instructions"
+						id="instructions"
+						class="form-control"
+						cols="30"
+						rows="8"
+					></textarea>
+				</div>
+
+				<div class="col-12">
+					<label for="Notes" class="form-label">Special Notes</label>
+					<textarea
+						name="notes"
+						id="notes"
+						class="form-control"
+						cols="30"
+						rows="3"
+						placeholder="Notes"
+					></textarea>
+				</div>
+
+				<div class="col-12">
+					<label for="imgUpload">Product Image</label>
+					<input
+						type="file"
+						class="form-control"
+						id="imageUpload"
+						name="file"
+					/>
+				</div>
+
+				<div class="col-12">
+					<button type="submit" class="btn btn-primary" value="Upload">
+						Submit Recipe
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

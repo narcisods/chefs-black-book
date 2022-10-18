@@ -1,57 +1,55 @@
-const express = require('express')
-const app = express()
-const mongoose = require("mongoose")
-const passport = require("passport")
-const session = require("express-session")
-const MongoStore = require("connect-mongo")(session)
-const methodOverride = require("method-override")
-const flash = require("express-flash")
-const expressLayouts = require('express-ejs-layouts')
-const logger = require('morgan')
-const connectDB = require("./config/database");
-const mainRoutes = require('./routes/mainRoutes.js')
-const recipeRoutes = require('./routes/recipeRoutes.js')
-const PORT = process.env.PORT || 8000
-
-
+const express = require('express');
+const app = express();
+const mongoose = require('mongoose');
+const passport = require('passport');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+const methodOverride = require('method-override');
+const flash = require('express-flash');
+const expressLayouts = require('express-ejs-layouts');
+const logger = require('morgan');
+const connectDB = require('./config/database');
+const mainRoutes = require('./routes/mainRoutes.js');
+const recipeRoutes = require('./routes/recipeRoutes.js');
+const PORT = process.env.PORT || 8000;
 
 //Use .env file in config folder
-require("dotenv").config({ path: "../config/.env" });
+require('dotenv').config({ path: '../config/.env' });
 
 //Body Parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Passport
-require("./config/passport")(passport);
+require('./config/passport')(passport);
 
 //Connect To Database
 connectDB();
 
 //Layouts
-app.use(expressLayouts)
-app.set('layout','./layouts/main')
+app.use(expressLayouts);
+app.set('layout', './layouts/main');
 
 //Using EJS for views
-app.set("view engine", "ejs");
+app.set('view engine', 'ejs');
 
 //Static Folder
-app.use(express.static("public"));
+app.use(express.static('public'));
 
 //Logging
-app.use(logger("dev"));
+app.use(logger('dev'));
 
 // Use forms for put / delete
-app.use(methodOverride("_method"));
+app.use(methodOverride('_method'));
 
 // Setup Sessions - stored in MongoDB
 app.use(
-  session({
-    secret: "keyboard cat",
-    resave: false,
-    saveUninitialized: false,
-    store: new MongoStore({ mongooseConnection: mongoose.connection }),
-  })
+	session({
+		secret: 'keyboard cat',
+		resave: false,
+		saveUninitialized: false,
+		store: new MongoStore({ mongooseConnection: mongoose.connection }),
+	})
 );
 
 // Passport middleware
@@ -62,11 +60,10 @@ app.use(passport.session());
 app.use(flash());
 
 //Routes
-app.use('/', mainRoutes)
-app.use('/recipe', recipeRoutes)
+app.use('/', mainRoutes);
+app.use('/recipe', recipeRoutes);
 
 //Console.log Port
 app.listen(PORT, () => {
-    console.log(`Server is running on ${PORT}`);
-  });
-  
+	console.log(`Server is running on ${PORT}`);
+});
