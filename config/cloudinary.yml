@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: striperonaplug
+  api_key: '313969848719521'
+  api_secret: Y3R4K41Bi7glvd76KQb2OCFqKI4
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: striperonaplug
+  api_key: '313969848719521'
+  api_secret: Y3R4K41Bi7glvd76KQb2OCFqKI4
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: striperonaplug
+  api_key: '313969848719521'
+  api_secret: Y3R4K41Bi7glvd76KQb2OCFqKI4
+  enhance_image_tag: true
+  static_file_support: false
