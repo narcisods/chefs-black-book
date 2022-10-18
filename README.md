@@ -3,7 +3,7 @@ A full stack web application aimed to serve professional chefs to store, share, 
 
 Link to project: https://chefs-black-book.herokuapp.com/
 
-![Alt text](screenshot.png?raw=true 'screenshot')
+![screenshot](https://narcisosalvador.com/images/chefsbb.png)
 
 How It's Made:
 Tech used: HTML, CSS, JavaScript, EJS, Mongoose, Express
