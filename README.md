@@ -3,7 +3,7 @@ A full stack web application aimed to serve professional chefs to store, share, 
 
 Link to project: https://chefs-black-book.herokuapp.com/
 
-Photo/Video: <img src="screenshot.png" alt="screenshot">
+![Alt text](screenshot.png?raw=true 'screenshot')
 
 How It's Made:
 Tech used: HTML, CSS, JavaScript, EJS, Mongoose, Express
