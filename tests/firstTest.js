@@ -40,3 +40,4 @@ async function example() {
 	}, 20000);
 }
 example();
+//Test examples
